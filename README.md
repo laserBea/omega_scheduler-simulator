@@ -104,3 +104,9 @@ ClusterSimulator simulator = new ClusterSimulator(
 // 运行模拟
 simulator.run(86400.0, null);  // 运行1天
 ```
+
+
+
+运行环境：
+JDK
+Apache Maven

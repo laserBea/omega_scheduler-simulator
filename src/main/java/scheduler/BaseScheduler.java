@@ -47,6 +47,24 @@ public abstract class BaseScheduler implements IScheduler {
         this.perTaskThinkTimes = new HashMap<>(perTaskThinkTimes);
         this.numMachinesToBlackList = numMachinesToBlackList;
     }
+
+    // Public getters for metrics so external runners can report results
+    public int getNumSuccessfulTransactions() { return numSuccessfulTransactions; }
+    public int getNumFailedTransactions() { return numFailedTransactions; }
+    public int getNumRetriedTransactions() { return numRetriedTransactions; }
+    public int getNumJobsTimedOutScheduling() { return numJobsTimedOutScheduling; }
+    public int getNumSuccessfulTaskTransactions() { return numSuccessfulTaskTransactions; }
+    public int getNumFailedTaskTransactions() { return numFailedTaskTransactions; }
+    public int getNumNoResourcesFoundSchedulingAttempts() { return numNoResourcesFoundSchedulingAttempts; }
+    public int getFailedFindVictimAttempts() { return failedFindVictimAttempts; }
+
+    public double getTotalUsefulTimeScheduling() { return totalUsefulTimeScheduling; }
+    public double getTotalWastedTimeScheduling() { return totalWastedTimeScheduling; }
+    public double getFirstAttemptUsefulTimeScheduling() { return firstAttemptUsefulTimeScheduling; }
+    public double getFirstAttemptWastedTimeScheduling() { return firstAttemptWastedTimeScheduling; }
+
+    public Map<String, Double> getPerWorkloadUsefulTimeScheduling() { return perWorkloadUsefulTimeScheduling; }
+    public Map<String, Double> getPerWorkloadWastedTimeScheduling() { return perWorkloadWastedTimeScheduling; }
     
     @Override
     public String getName() {

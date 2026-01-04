@@ -18,6 +18,7 @@ public class ClusterSimulator extends Simulator {
     protected final Map<String, IScheduler> schedulers;
     protected final Map<String, List<String>> workloadToSchedulerMap;
     protected final List<Workload> workloads;
+    private final java.util.concurrent.atomic.AtomicInteger roundRobinCounter = new java.util.concurrent.atomic.AtomicInteger(0);
     
     public ClusterSimulator(CellState cellState,
                            Map<String, IScheduler> schedulers,
@@ -174,9 +175,13 @@ public class ClusterSimulator extends Simulator {
         if (schedulerNames == null || schedulerNames.isEmpty()) {
             return null;
         }
-        // Round-robin across schedulers
-        // Note: This is a simplified version; in practice you'd want thread-safe round-robin
-        String name = schedulerNames.get(0); // Simplified - use first scheduler
+        // Round-robin across schedulers (thread-safe implementation)
+        if (schedulerNames.size() == 1) {
+            return schedulers.get(schedulerNames.get(0));
+        }
+        // Use a round-robin counter for fair distribution
+        int index = roundRobinCounter.getAndIncrement() % schedulerNames.size();
+        String name = schedulerNames.get(index);
         return schedulers.get(name);
     }
     

@@ -110,3 +110,32 @@ simulator.run(86400.0, null);  // 运行1天
 运行环境：
 JDK
 Apache Maven
+
+最终运行情况：
+result.csv
+```csv
+experiment,metric,value
+scheduler-id-info: 1, monolithic, 1617791695, {wl=0.1}, {wl=0.01}
+Prefilling cell-state with 0 workloads.
+Loaded 20 jobs from workload wl, and skipped 0.
+*** Simulation started, time = 0.0. ***
+*** Simulation finished running, time = 0.0. ***
+monolithic,num_successful_transactions,20
+monolithic,total_useful_time_scheduling,2.200
+scheduler-id-info: 1, mesos, 2032251042, {wl=0.1}, {wl=0.01}
+Prefilling cell-state with 0 workloads.
+Loaded 20 jobs from workload wl, and skipped 0.
+*** Simulation started, time = 0.0. ***
+*** Simulation finished running, time = 0.0. ***
+mesos,num_successful_transactions,20
+mesos,total_useful_time_scheduling,2.200
+scheduler-id-info: 1, omega, 486898233, {wl=0.1}, {wl=0.01}
+Prefilling cell-state with 0 workloads.
+Loaded 20 jobs from workload wl, and skipped 0.
+*** Simulation started, time = 0.0. ***
+*** Simulation finished running, time = 0.0. ***
+omega,num_successful_transactions,20
+omega,total_useful_time_scheduling,2.200
+```
+如以上代码所示，关于Omega等总共三个调度器都进行了测试数据的载入和运行。
+由于设置的测试场景比较简单，所以所有测试都迅速完成，并且并发控制。

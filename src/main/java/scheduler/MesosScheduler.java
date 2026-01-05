@@ -92,6 +92,7 @@ public class MesosScheduler extends BaseScheduler {
                     
                     if (!claimDeltas.isEmpty()) {
                         numSuccessfulTransactions++;
+                        numSuccessfulTaskTransactions += claimDeltas.size();
                         recordUsefulTimeScheduling(job, jobThinkTime,
                             job.getNumSchedulingAttempts() == 1);
                         mesosSimulator.log(String.format(

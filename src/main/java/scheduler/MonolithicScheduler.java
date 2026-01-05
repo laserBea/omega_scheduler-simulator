@@ -75,6 +75,7 @@ public class MonolithicScheduler extends BaseScheduler {
                         "scheduled %d tasks of job %d's, %d remaining.",
                         claimDeltas.size(), finalJob.getId(), finalJob.getUnscheduledTasks()));
                     numSuccessfulTransactions++;
+                    numSuccessfulTaskTransactions += claimDeltas.size();
                     recordUsefulTimeScheduling(finalJob, thinkTime,
                         finalJob.getNumSchedulingAttempts() == 1);
                 } else {
